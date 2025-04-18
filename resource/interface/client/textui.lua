@@ -26,18 +26,22 @@ function lib.showTextUI(text, options)
     options.text = text
     currentText = text
 
-    SendNUIMessage({
-        action = 'textUi',
-        data = options
-    })
+    exports['ls-textui']:DrawText(text, options)
+
+    -- SendNUIMessage({
+    --     action = 'textUi',
+    --     data = options
+    -- })
 
     isOpen = true
 end
 
 function lib.hideTextUI()
-    SendNUIMessage({
-        action = 'textUiHide'
-    })
+    -- SendNUIMessage({
+    --     action = 'textUiHide'
+    -- })
+
+    exports['ls-textui']:HideText()
 
     isOpen = false
     currentText = nil
