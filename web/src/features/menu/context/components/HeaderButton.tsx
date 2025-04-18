@@ -26,12 +26,18 @@ const useStyles = createStyles((theme, params: { canClose?: boolean }) => ({
       backgroundColor: '#ccc',
       border: '1px solid #777',
     },
+    '&:disabled': {
+      backgroundColor: '#ccc',
+      padding: '1px 1px',
+      borderRadius: '5px',
+      borderBottom: '2px solid #777',
+    },
   },
   root: {
     border: 'none',
   },
   label: {
-    color: params.canClose === false ? '#ff0000' : '#ff0000',
+    color: params.canClose === false ? '#ff0000' : '#212529',
   },
 }));
 
