@@ -41,4 +41,15 @@ export const debugCustomNotification = () => {
       },
     },
   ]);
+  debugData<NotificationProps>([
+    {
+      action: 'notify',
+      data: {
+        description: 'Vous avez lavez vos mains ! Vous pouvez maintenant manger !',
+        type: 'success',
+        duration: 10000,
+        showDuration: true,
+      },
+    },
+  ]);
 };

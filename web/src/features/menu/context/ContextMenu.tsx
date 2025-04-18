@@ -16,6 +16,8 @@ const openMenu = (id: string | undefined) => {
 const useStyles = createStyles((theme) => ({
   container: {
     position: 'absolute',
+    borderRadius: '7px',
+    padding: '5px 5px',
     top: '15%',
     right: '25%',
     width: 320,
@@ -30,10 +32,10 @@ const useStyles = createStyles((theme) => ({
   titleContainer: {
     borderRadius: 4,
     flex: '1 85%',
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor: '#212529',
   },
   titleText: {
-    color: theme.colors.dark[0],
+    color: '#ccc',
     padding: 6,
     textAlign: 'center',
   },

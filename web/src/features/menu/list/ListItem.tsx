@@ -15,13 +15,14 @@ interface Props {
 
 const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   buttonContainer: {
-    backgroundColor: theme.colors.dark[6],
+    backgroundColor: '#212529',
     borderRadius: theme.radius.md,
     padding: 2,
     height: 60,
     scrollMargin: 8,
     '&:focus': {
-      backgroundColor: theme.colors.dark[4],
+      backgroundColor: '#212529',
+      border: '1px solid #42484e',
       outline: 'none',
     },
   },
@@ -41,20 +42,30 @@ const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   },
   icon: {
     fontSize: 24,
-    color: params.iconColor || theme.colors.dark[2],
+    color: 'rgb(173, 181, 189)',
   },
   label: {
-    color: theme.colors.dark[2],
+    color: 'rgb(173, 181, 189)',
     textTransform: 'uppercase',
     fontSize: 12,
     verticalAlign: 'middle',
   },
   chevronIcon: {
-    fontSize: 14,
-    color: theme.colors.dark[2],
+    fontSize: 12,
+    color: '#212529',
+  },
+  boxContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1px 3px',
+    background: '#ccc',
+    color: '#212529',
+    fontWeight: 800,
+    borderRadius: '5px',
+    borderBottom: '2px solid #777',
   },
   scrollIndexValue: {
-    color: theme.colors.dark[2],
+    color: '#212529',
     textTransform: 'uppercase',
     fontSize: 14,
   },
@@ -108,7 +119,7 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
                   : item.values[scrollIndex]}
               </Text>
             </Stack>
-            <Group spacing={1} position="center">
+            <Group spacing={1} position="center" className={classes.boxContainer}>
               <LibIcon icon="chevron-left" className={classes.chevronIcon} />
               <Text className={classes.scrollIndexValue}>
                 {scrollIndex + 1}/{item.values.length}

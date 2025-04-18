@@ -18,8 +18,9 @@ export const debugCircleProgressbar = () => {
     {
       action: 'circleProgress',
       data: {
+        position: 'bottom',
         duration: 8000,
-        label: 'Using Armour',
+        label: 'Vous mangez un sandwich !',
       },
     },
   ]);

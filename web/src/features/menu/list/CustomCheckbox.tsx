@@ -4,14 +4,25 @@ const useStyles = createStyles((theme) => ({
   root: {
     display: 'flex',
     alignItems: 'center',
+    padding: '1px 1px',
+    background: '#ccc',
+    color: '#212529',
+    fontWeight: 'bold',
+    borderRadius: '5px',
+    borderBottom: '2px solid #777',
   },
   input: {
-    backgroundColor: theme.colors.dark[7],
-    '&:checked': { backgroundColor: theme.colors.dark[2], borderColor: theme.colors.dark[2] },
+    backgroundColor: '#ccc',
+    borderColor: '#ccc',
+    '&:checked': {
+      backgroundColor: '#ccc',
+      borderColor: '#ccc',
+      orderColor: '#ccc',
+    },
   },
   inner: {
     '> svg > path': {
-      fill: theme.colors.dark[6],
+      fill: '#212529',
     },
   },
 }));

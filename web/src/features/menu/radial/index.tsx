@@ -17,33 +17,34 @@ const useStyles = createStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
   },
   sector: {
-    fill: theme.colors.dark[6],
-    color: theme.colors.dark[0],
+    fill: 'rgb(33, 37, 41)',
+    color: '#ccc',
 
     '&:hover': {
-      fill: theme.fn.primaryColor(),
-      cursor: 'pointer',
+      fill: 'rgba(204, 204, 204, 0.50)',
+      cursor: 'grab',
       '> g > text, > g > svg > path': {
         fill: '#fff',
       },
     },
     '> g > text': {
-      fill: theme.colors.dark[0],
+      fill: 'white',
       strokeWidth: 0,
     },
   },
   backgroundCircle: {
-    fill: theme.colors.dark[6],
+    fill: 'rgba(33, 37, 41, 0.5)',
   },
   centerCircle: {
-    fill: theme.fn.primaryColor(),
+    fill: '#ccc',
     color: '#fff',
-    stroke: theme.colors.dark[6],
-    strokeWidth: 4,
+    stroke: 'rgba(33, 37, 41, 0.5)',
+    strokeWidth: 5,
     '&:hover': {
-      cursor: 'pointer',
-      fill: theme.colors[theme.primaryColor][theme.fn.primaryShade() - 1],
+      cursor: 'grab',
+      fill: 'white',
     },
+    
   },
   centerIconContainer: {
     position: 'absolute',
@@ -245,7 +246,7 @@ const RadialMenu: React.FC = () => {
               icon={!menu.sub && menu.page < 2 ? 'xmark' : 'arrow-rotate-left'}
               fixedWidth
               className={classes.centerIcon}
-              color="#fff"
+              style={{ color: '#212529' }}
               size="2x"
             />
           </div>

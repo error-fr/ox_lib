@@ -8,10 +8,13 @@ import type { ProgressbarProps } from '../../typings';
 const useStyles = createStyles((theme) => ({
   container: {
     width: 350,
-    height: 45,
-    borderRadius: theme.radius.sm,
-    backgroundColor: theme.colors.dark[5],
-    overflow: 'hidden',
+    height: 10,
+    border: '1px solid #42484e',
+    borderRadius: '7px',
+    backgroundColor: '#212529',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '25px', // Ajout d'un écart sous le label
   },
   wrapper: {
     width: '100%',
@@ -24,25 +27,31 @@ const useStyles = createStyles((theme) => ({
   },
   bar: {
     height: '100%',
-    backgroundColor: theme.colors[theme.primaryColor][theme.fn.primaryShade()],
+    backgroundColor: 'rgb(173, 181, 189)',
+    borderRadius: '7px',
   },
   labelWrapper: {
     position: 'absolute',
     display: 'flex',
     width: 350,
-    height: 45,
+    height: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   label: {
+    background: '#ccc',
+    margin: '0px 0px 20px 0px',
     maxWidth: 350,
-    padding: 8,
+    padding: '1px 8px',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    fontSize: 20,
-    color: theme.colors.gray[3],
-    textShadow: theme.shadows.sm,
+    fontSize: '17px',
+    color: '#212529',
+    fontWeight: 'bold',
+    borderRadius: '5px',
+    borderBottom: '3px solid #777',
+    marginRight: '3px',
   },
 }));
 
@@ -64,6 +73,9 @@ const Progressbar: React.FC = () => {
     <>
       <Box className={classes.wrapper}>
         <ScaleFade visible={visible} onExitComplete={() => fetchNui('progressComplete')}>
+            <Box className={classes.labelWrapper}>
+              <Text className={classes.label}>{label}</Text>
+            </Box>
           <Box className={classes.container}>
             <Box
               className={classes.bar}
@@ -71,12 +83,10 @@ const Progressbar: React.FC = () => {
               sx={{
                 animation: 'progress-bar linear',
                 animationDuration: `${duration}ms`,
+                animationTimingFunction: 'ease-in-out', // You can modify the timing function
+                width: '100%', // Ensure the bar spans the container width
               }}
-            >
-              <Box className={classes.labelWrapper}>
-                <Text className={classes.label}>{label}</Text>
-              </Box>
-            </Box>
+            />
           </Box>
         </ScaleFade>
       </Box>

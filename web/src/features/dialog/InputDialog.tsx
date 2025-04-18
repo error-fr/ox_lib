@@ -1,4 +1,4 @@
-import { Button, Group, Modal, Stack } from '@mantine/core';
+import { Button, Group, Modal, Stack, createStyles } from '@mantine/core';
 import React from 'react';
 import { useNuiEvent } from '../../hooks/useNuiEvent';
 import { useLocales } from '../../providers/LocaleProvider';
@@ -23,7 +23,16 @@ export type FormValues = {
   }[];
 };
 
+const useStyles = createStyles((theme) => ({
+  container: {
+    border: '1px solid rgb(0, 128, 255)',
+    borderRadius: '7px',
+    backgroundColor: '#212529',
+  },
+}));
+
 const InputDialog: React.FC = () => {
+  const { classes } = useStyles();
   const [fields, setFields] = React.useState<InputProps>({
     heading: '',
     rows: [{ type: 'input', label: '' }],

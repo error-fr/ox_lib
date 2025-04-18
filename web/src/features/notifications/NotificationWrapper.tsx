@@ -8,31 +8,35 @@ import type { NotificationProps } from '../../typings';
 import MarkdownComponents from '../../config/MarkdownComponents';
 import LibIcon from '../../components/LibIcon';
 
+// MODIFIÉ
+
 const useStyles = createStyles((theme) => ({
   container: {
     width: 300,
     height: 'fit-content',
-    backgroundColor: theme.colors.dark[6],
-    color: theme.colors.dark[0],
-    padding: 12,
-    borderRadius: theme.radius.sm,
-    fontFamily: 'Roboto',
-    boxShadow: theme.shadows.sm,
+    backgroundColor: '#212529',
+    color: 'white',
+    padding: '8px 10px',
+    border: '1px solid #42484e',
+    borderRadius: '7px',
+    fontFamily: 'Plus Jakarta Sans',
+    gap: '0.5rem'
   },
   title: {
     fontWeight: 500,
+    color: 'rgb(173, 181, 189)',
     lineHeight: 'normal',
   },
   description: {
     fontSize: 12,
-    color: theme.colors.dark[2],
-    fontFamily: 'Roboto',
+    color: 'white',
+    fontFamily: 'Plus Jakarta Sans',
     lineHeight: 'normal',
   },
   descriptionOnly: {
     fontSize: 14,
-    color: theme.colors.dark[2],
-    fontFamily: 'Roboto',
+    color: 'white',
+    fontFamily: 'Plus Jakarta Sans',
     lineHeight: 'normal',
   },
 }));
