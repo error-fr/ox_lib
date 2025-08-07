@@ -25,11 +25,11 @@ end
 
 local function updateText()
 	local text = {
-		('------ Creating %s Zone ------  \n'):format(firstToUpper(zoneType)),
-		('Step size [Scroll]: %sm/%s&deg;  \n'):format(steps[1][step], steps[2][step]),
-		('X coord [A/D]: %s  \n'):format(xCoord),
-		('Y coord [W/S]: %s  \n'):format(yCoord),
-		('Z coord [R/F]: %s  \n'):format(zCoord),
+		-- ('------ Creating %s Zone ------  \n'):format(firstToUpper(zoneType)),
+		('Taille de pas [Scroll]: %sm/%s&deg;  \n'):format(steps[1][step], steps[2][step]),
+		('X [Q/D]: %s  \n'):format(xCoord),
+		('Y [Z/S]: %s  \n'):format(yCoord),
+		('Z [R/F]: %s  \n'):format(zCoord),
 	}
 
 	if zoneType == 'poly' then
@@ -39,24 +39,24 @@ local function updateText()
 		text[#text + 1] = 'Create new point - [Space]  \n'
         text[#text + 1] = 'Edit last point - [Backspace]  \n'
 	elseif zoneType == 'box' then
-		text[#text + 1] = ('Heading [Q/E]: %s&deg;  \n'):format(heading)
-		text[#text + 1] = ('Height [Shift + Scroll]: %s  \n'):format(height)
-		text[#text + 1] = ('Width [Ctrl + Scroll]: %s  \n'):format(width)
-		text[#text + 1] = ('Length [Alt + Scroll]: %s  \n'):format(length)
-		text[#text + 1] = ('Cycle display mode [G]: %s  \n'):format(firstToUpper(displayModes[displayMode]))
-        text[#text + 1] = ('Toggle Axis mode [C]: %s  \n'):format(alignMovementWithCamera and 'Camera' or 'Grid')
-		text[#text + 1] = 'Recenter - [Space]  \n'
+		text[#text + 1] = ('Rotation [A/E]: %s&deg;  \n'):format(heading)
+		text[#text + 1] = ('Hauteur [Shift + Scroll]: %s  \n'):format(height)
+		text[#text + 1] = ('Largeur [Ctrl + Scroll]: %s  \n'):format(width)
+		text[#text + 1] = ('Longueur [Alt + Scroll]: %s  \n'):format(length)
+		text[#text + 1] = ('Mode affichage [G]: %s  \n'):format(firstToUpper(displayModes[displayMode]))
+        text[#text + 1] = ('Axes [C]: %s  \n'):format(alignMovementWithCamera and 'Camera' or 'Grid')
+		text[#text + 1] = 'Recentrer - [Space]  \n'
 	elseif zoneType == 'sphere' then
 		text[#text + 1] = ('Size [Shift + Scroll]: %s  \n'):format(height)
         text[#text + 1] = ('Toggle Axis mode [C]: %s  \n'):format(alignMovementWithCamera and 'Camera' or 'Grid')
-		text[#text + 1] = 'Recenter - [Space]  \n'
+		text[#text + 1] = 'Recentrer - [Space]  \n'
 	end
 
-	text[#text + 1] = 'Toggle controls - [X]  \n'
-	text[#text + 1] = 'Save - [Enter]  \n'
-	text[#text + 1] = 'Cancel - [Esc]'
+	text[#text + 1] = 'Activer/Désactiver touches - [X]  \n'
+	text[#text + 1] = 'Sauvegarder - [Enter]  \n'
+	text[#text + 1] = 'Annuler - [Esc]'
 
-	lib.showTextUI(table.concat(text))
+	lib.showTextUI(table.concat(text), {position = 'left-center'})
 end
 
 local function round(number)

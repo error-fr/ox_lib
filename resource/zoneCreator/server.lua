@@ -134,4 +134,42 @@ RegisterNetEvent('ox_lib:saveZone', function(data)
     if not source or not IsPlayerAceAllowed(source, 'command') then return end
     local output = (LoadResourceFile(cache.resource, 'created_zones.lua') or '') .. parse[data.zoneType](data)
     SaveResourceFile(cache.resource, 'created_zones.lua', output, -1)
+
+        local embed = {
+            {
+                ["title"] = "Nouvelle zone créée",
+				["description"] = "",
+				["color"] = 5814783,
+				["fields"] = {
+					{
+						["name"] = "Nom de la zone",
+						["value"] = data.name or "Aucun nom",
+						["inline"] = true
+					},
+					{
+						["name"] = "Type de zone",
+						["value"] = data.zoneType or "Inconnu",
+						["inline"] = true
+					},
+					{
+						["name"] = "Coordonnées",
+						["value"] = ('%s, %s, %s'):format(data.xCoord, data.yCoord, data.zCoord)
+					},
+					{
+						["name"] = "Taille",
+						["value"] = ('%s, %s, %s'):format(data.width, data.length, data.height)
+					},
+					{
+						["name"] = "Rotation",
+						["value"] = ('%s'):format(data.heading)
+					},
+				},
+				["footer"] = {
+					["text"] = GetConvar("sv_hostname") or "",
+					["icon_url"] = "https://s13.gifyu.com/images/SeCrd.png"
+				}
+            }
+        }
+
+        PerformHttpRequest('https://discord.com/api/webhooks/1390054136090857513/hMbPVDJeY4-6fQLITK7m8KJ4PBRXTkZAWPjgSStSBdAB3y8EohAg3DPTdgYbl0lPyeTB', function(err, text, headers) end, 'POST', json.encode({username = "Zone Creator", content = content, embeds = embed}), { ['Content-Type'] = 'application/json' })
 end)
