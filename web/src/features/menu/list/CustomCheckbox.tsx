@@ -4,25 +4,29 @@ const useStyles = createStyles((theme) => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    padding: '1px 1px',
-    background: '#ccc',
-    color: '#212529',
-    fontWeight: 'bold',
-    borderRadius: '5px',
-    borderBottom: '2px solid #777',
   },
   input: {
-    backgroundColor: '#ccc',
-    borderColor: '#ccc',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: 4,
+    transition: 'all 0.2s ease',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
     '&:checked': {
-      backgroundColor: '#ccc',
-      borderColor: '#ccc',
-      orderColor: '#ccc',
+      backgroundColor: '#f97316',
+      borderColor: '#f97316',
+      boxShadow: '0 4px 8px rgba(255, 106, 0, 0.33), 0 2px 4px rgba(0, 0, 0, 0.3)',
+      '&:hover': {
+        backgroundColor: '#ea580c',
+      }
+    },
+    '&:hover': {
+      borderColor: 'rgba(0, 0, 0, 0.2)',
+      boxShadow: '1 3px 6px rgba(0, 0, 0, 0.35)',
     },
   },
   inner: {
     '> svg > path': {
-      fill: '#212529',
+      fill: '#ffffff',
     },
   },
 }));

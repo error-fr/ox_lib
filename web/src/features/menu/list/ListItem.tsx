@@ -15,59 +15,130 @@ interface Props {
 
 const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   buttonContainer: {
-    backgroundColor: '#212529',
-    borderRadius: theme.radius.md,
-    padding: 2,
-    height: 60,
-    scrollMargin: 8,
+    backgroundColor: 'rgba(12, 12, 18, 0.94)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    borderRadius: 6,
+    padding: 0,
+    height: 48,
+    scrollMargin: 6,
+    transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    backdropFilter: 'blur(8px)',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(249, 115, 22, 0.02))',
+      opacity: 0,
+      transition: 'opacity 0.3s ease',
+      zIndex: 0,
+    },
+    '&:hover': {
+      backgroundColor: 'rgba(20, 20, 25, 0.96)',
+      borderColor: 'rgba(255, 255, 255, 0.15)',
+      transform: 'translateY(-1px) scale(1.01)',
+      boxShadow: '0 6px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2)',
+      '&::before': {
+        opacity: 1,
+      },
+    },
     '&:focus': {
-      backgroundColor: '#212529',
-      border: '1px solid #42484e',
+      backgroundColor: 'rgba(249, 115, 22, 0.12)',
+      borderColor: '#f97316',
       outline: 'none',
+      transform: 'translateY(-1px) scale(1.02)',
+      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(249, 115, 22, 0.3)',
+      '&::before': {
+        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.08))',
+        opacity: 1,
+      },
     },
   },
   iconImage: {
-    maxWidth: 32,
+    width: 16,
+    height: 16,
+    borderRadius: 2,
+    objectFit: 'contain',
   },
   buttonWrapper: {
-    paddingLeft: 5,
-    paddingRight: 12,
+    paddingLeft: 18,
+    paddingRight: 18,
     height: '100%',
+    position: 'relative',
+    zIndex: 1,
   },
   iconContainer: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     width: 32,
     height: 32,
+    minWidth: 32,
+    minHeight: 32,
+    maxWidth: 32,
+    maxHeight: 32,
+    background: 'linear-gradient(135deg, rgba(25, 25, 30, 0.85), rgba(20, 20, 25, 0.9))',
+    borderRadius: 6,
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 4px rgba(0, 0, 0, 0.4)',
+    transition: 'all 0.3s ease',
+    flexShrink: 0,
   },
   icon: {
-    fontSize: 24,
-    color: 'rgb(173, 181, 189)',
+    fontSize: 16,
+    color: params.iconColor || '#f1f5f9',
+    opacity: 0.95,
+    transition: 'all 0.3s ease',
+    filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4))',
+    width: 16,
+    height: 16,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   label: {
-    color: 'rgb(173, 181, 189)',
-    textTransform: 'uppercase',
-    fontSize: 12,
+    color: '#f1f5f9',
+    fontSize: 14,
+    fontWeight: 450,
     verticalAlign: 'middle',
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    opacity: 0.96,
+    transition: 'all 0.3s ease',
+  },
+  mainText: {
+    color: '#f1f5f9',
+    fontSize: 14,
+    fontWeight: 450,
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    opacity: 0.96,
+    transition: 'all 0.3s ease',
+    lineHeight: '32px',
+    minHeight: 32,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  valueText: {
+    color: '#94a3b8',
+    fontSize: 12,
+    fontWeight: 400,
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    opacity: 0.8,
   },
   chevronIcon: {
     fontSize: 12,
-    color: '#212529',
-  },
-  boxContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '1px 3px',
-    background: '#ccc',
-    color: '#212529',
-    fontWeight: 800,
-    borderRadius: '5px',
-    borderBottom: '2px solid #777',
+    color: '#64748b',
+    opacity: 0.7,
   },
   scrollIndexValue: {
-    color: '#212529',
-    textTransform: 'uppercase',
-    fontSize: 14,
+    color: '#cbd5e1',
+    fontSize: 11,
+    fontWeight: 400,
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    opacity: 0.8,
   },
   progressStack: {
     width: '100%',
@@ -75,7 +146,12 @@ const useStyles = createStyles((theme, params: { iconColor?: string }) => ({
   },
   progressLabel: {
     verticalAlign: 'middle',
-    marginBottom: 3,
+    marginBottom: 6,
+    color: '#f1f5f9',
+    fontSize: 13,
+    fontWeight: 500,
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    opacity: 0.9,
   },
 }));
 
@@ -110,16 +186,16 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
         )}
         {Array.isArray(item.values) ? (
           <Group position="apart" w="100%">
-            <Stack spacing={0} justify="space-between">
+            <Stack spacing={2} justify="space-between">
               <Text className={classes.label}>{item.label}</Text>
-              <Text>
+              <Text className={classes.valueText}>
                 {typeof item.values[scrollIndex] === 'object'
                   ? // @ts-ignore for some reason even checking the type TS still thinks it's a string
-                    item.values[scrollIndex].label
+                  item.values[scrollIndex].label
                   : item.values[scrollIndex]}
               </Text>
             </Stack>
-            <Group spacing={1} position="center" className={classes.boxContainer}>
+            <Group spacing={8} position="center">
               <LibIcon icon="chevron-left" className={classes.chevronIcon} />
               <Text className={classes.scrollIndexValue}>
                 {scrollIndex + 1}/{item.values.length}
@@ -129,7 +205,7 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
           </Group>
         ) : item.checked !== undefined ? (
           <Group position="apart" w="100%">
-            <Text>{item.label}</Text>
+            <Text className={classes.mainText}>{item.label}</Text>
             <CustomCheckbox checked={checked}></CustomCheckbox>
           </Group>
         ) : item.progress !== undefined ? (
@@ -137,12 +213,20 @@ const ListItem = forwardRef<Array<HTMLDivElement | null>, Props>(({ item, index,
             <Text className={classes.progressLabel}>{item.label}</Text>
             <Progress
               value={item.progress}
-              color={item.colorScheme || 'dark.0'}
-              styles={(theme) => ({ root: { backgroundColor: theme.colors.dark[3] } })}
+              color={item.colorScheme || '#f97316'}
+              styles={() => ({
+                root: {
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                  borderRadius: 4,
+                },
+                bar: {
+                  borderRadius: 4,
+                }
+              })}
             />
           </Stack>
         ) : (
-          <Text>{item.label}</Text>
+          <Text className={classes.mainText}>{item.label}</Text>
         )}
       </Group>
     </Box>

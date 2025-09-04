@@ -2,53 +2,102 @@ import { debugData } from '../../../utils/debugData';
 import { MenuSettings } from '../../../typings';
 
 export const debugMenu = () => {
-  debugData<MenuSettings>([
+  debugData([
     {
       action: 'setMenu',
       data: {
-        //   position: "bottom-left",
-        title: 'Vehicle garage',
+        title: "Benny's",
+        bannerIcon: 'https://media.discordapp.net/attachments/638717586200330240/1411049368446046218/image.png?ex=68b33da1&is=68b1ec21&hm=520f17df55471dcd1d37e2e10ebe0f9fd2cd695b68c7b2fbbf7b018a5212852f&=&format=webp&quality=lossless',
         items: [
-          { label: 'Option 1', icon: 'heart' },
           {
-            label: 'Option 2',
-            icon: 'basket-shopping',
-            description: 'Tooltip description 1',
+            label: 'Inspection Véhicule',
+            icon: 'magnifying-glass',
+            description: 'Diagnostic complet de votre véhicule'
+          },
+          {
+            label: 'Attache véhicule',
+            icon: 'wrench',
+            description: 'Réparer les dommages critiques immédiatement',
             checked: true,
           },
           {
-            label: 'Vehicle class',
-            values: ['pogchamp', 'nice champ', { label: 'POGGERS', description: 'CHAMPPERS' }],
-            icon: 'tag',
-            description: 'Side scroll general description',
+            label: 'Catégorie de Véhicule',
+            values: [
+              'Berline',
+              'SUV Urbain',
+              { label: 'Véhicule de Sport', description: 'Performances élevées' },
+              { label: 'Utilitaire', description: 'Transport de marchandises' }
+            ],
+            icon: 'car',
+            description: 'Sélectionnez le type de véhicule pour un service adapté',
           },
           {
-            label: 'Oil Level',
-            progress: 30,
-            icon: 'oil-can',
-            description: 'Remaining Oil: 30%',
+            label: 'Niveau de Carburant',
+            progress: 45,
+            icon: 'gas-pump',
+            description: 'Carburant restant: 45L sur 100L',
+            colorScheme: 'orange',
           },
           {
-            label: 'Durability',
-            progress: 80,
+            label: 'État de la Carrosserie',
+            progress: 75,
             icon: 'car-side',
-            description: 'Durability: 80%',
+            description: 'Intégrité structurelle: Bon état général',
+            colorScheme: 'green',
+            iconColor: '#2d5a27',
+          },
+          {
+            label: 'Contrôle Technique',
+            progress: 90,
+            icon: 'clipboard-check',
+            description: 'Conformité réglementaire: Valide',
             colorScheme: 'blue',
-            iconColor: '#55778d',
           },
-          { label: 'Option 1' },
-          { label: 'Option 2' },
           {
-            label: 'Vehicle class',
-            values: ['Nice', 'Super nice', 'Extra nice'],
-            defaultIndex: 1,
+            label: 'Custom',
+            icon: 'palette',
+            description: 'Modifications esthétiques et performances'
           },
-          { label: 'Option 1' },
-          { label: 'Option 2' },
           {
-            label: 'Vehicle class',
-            values: ['Nice', 'Super nice', 'Extra nice'],
+            label: 'Assurance Véhicule',
+            icon: 'shield-halved',
+            description: 'Vérifier et renouveler votre couverture'
           },
+          {
+            label: 'Classe de Permis Requis',
+            values: ['Permis B (Standard)', 'Permis C (Poids Lourds)', 'Permis D (Transport)'],
+            defaultIndex: 0,
+            icon: 'id-card',
+            description: 'Vérification des autorisations de conduite'
+          },
+          {
+            label: 'Historique d\'Entretien',
+            icon: 'clock-rotate-left',
+            description: 'Consulter les interventions précédentes'
+          },
+          {
+            label: 'Devis Réparations',
+            icon: 'calculator',
+            description: 'Estimation des coûts de remise en état'
+          },
+          {
+            label: 'Type d\'Intervention',
+            values: [
+              'Entretien Préventif',
+              'Réparation d\'Urgence',
+              'Modification Performance',
+              'Restauration Complète'
+            ],
+            icon: 'tools',
+            description: 'Choisissez le service approprié à vos besoins'
+          },
+          {
+            label: 'Garantie Constructeur',
+            progress: 60,
+            icon: 'certificate',
+            description: 'Couverture garantie restante: 24 mois',
+            colorScheme: 'purple',
+          }
         ],
       },
     },

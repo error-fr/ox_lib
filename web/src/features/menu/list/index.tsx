@@ -10,15 +10,13 @@ import LibIcon from '../../../components/LibIcon';
 
 const useStyles = createStyles((theme, params: { position?: MenuPosition; itemCount: number; selected: number }) => ({
   tooltip: {
-    backgroundColor: '#ccc',
-    fontSize: '15px',
-    padding: '1px 8px',
-    color: '#212529',
-    fontWeight: 'bold',
-    borderRadius: '5px',
-    borderBottom: '3px solid #777',
+    backgroundColor: 'rgba(8, 8, 10, 0.98)',
+    color: '#e1e5e9',
+    borderRadius: 6,
     maxWidth: 350,
     whiteSpace: 'normal',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+    backdropFilter: 'blur(15px)',
   },
   container: {
     position: 'absolute',
@@ -30,34 +28,40 @@ const useStyles = createStyles((theme, params: { position?: MenuPosition; itemCo
     right: params.position === 'top-right' || params.position === 'bottom-right' ? 1 : undefined,
     left: params.position === 'bottom-left' ? 1 : undefined,
     bottom: params.position === 'bottom-left' || params.position === 'bottom-right' ? 1 : undefined,
-    fontFamily: 'Plus Jakarta Sans, sans-serif',
-    width: 384,
+    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    width: 420,
+    filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4))',
   },
   buttonsWrapper: {
     height: 'fit-content',
-    maxHeight: 415,
+    maxHeight: 450,
     overflow: 'hidden',
-    borderRadius: params.itemCount <= 6 || params.selected === params.itemCount - 1 ? theme.radius.md : undefined,
-    backgroundColor: '#212529',
-    borderRight: '1px solid #42484e',
-    borderLeft: '1px solid #42484e',
+    borderRadius: params.itemCount <= 6 || params.selected === params.itemCount - 1 ? 8 : undefined,
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    backdropFilter: 'blur(15px)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
-    color: '#ccc',
+    borderTop: 'none',
+    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3)',
   },
   scrollArrow: {
-    backgroundColor: '#212529',
-    borderBottom: '1px solid #42484e',
-    borderRight: '1px solid #42484e',
-    borderLeft: '1px solid #42484e',
+    backgroundColor: 'rgba(8, 8, 10, 0.95)',
+    backdropFilter: 'blur(15px)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+    borderTop: 'none',
     textAlign: 'center',
-    borderBottomLeftRadius: theme.radius.md,
-    borderBottomRightRadius: theme.radius.md,
-    height: 25,
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6,
+    height: 30,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   scrollArrowIcon: {
-    color: '#ccc',
-    fontSize: 20,
+    color: '#f97316',
+    fontSize: 16,
+    opacity: 0.8,
   },
 }));
 
@@ -157,8 +161,8 @@ const ListMenu: React.FC = () => {
         menu.items[selected].values
           ? indexStates[selected]
           : menu.items[selected].checked
-          ? checkedStates[selected]
-          : null,
+            ? checkedStates[selected]
+            : null,
         menu.items[selected].values ? 'isScroll' : menu.items[selected].checked ? 'isCheck' : null,
       ]).catch();
     }, 100);
@@ -213,23 +217,23 @@ const ListMenu: React.FC = () => {
           label={
             isValuesObject(menu.items[selected].values)
               ? // @ts-ignore
-                menu.items[selected].values[indexStates[selected]].description
+              menu.items[selected].values[indexStates[selected]].description
               : menu.items[selected].description
           }
           opened={
             isValuesObject(menu.items[selected].values)
               ? // @ts-ignore
-                !!menu.items[selected].values[indexStates[selected]].description
+              !!menu.items[selected].values[indexStates[selected]].description
               : !!menu.items[selected].description
           }
           transitionDuration={0}
           classNames={{ tooltip: classes.tooltip }}
         >
           <Box className={classes.container}>
-            <Header title={menu.title} />
+            <Header title={menu.title} banner={menu.banner} bannerIcon={menu.bannerIcon} />
             <Box className={classes.buttonsWrapper} onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => moveMenu(e)}>
               <FocusTrap active={visible}>
-                <Stack spacing={8} p={8} sx={{ overflowY: 'scroll' }}>
+                <Stack spacing={3} p={8} sx={{ overflowY: 'scroll', '&::-webkit-scrollbar': { display: 'none' }, scrollbarWidth: 'none' }}>
                   {menu.items.map((item, index) => (
                     <React.Fragment key={`menu-item-${index}`}>
                       {item.label && (

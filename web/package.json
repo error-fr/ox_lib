@@ -1,7 +1,7 @@
 {
   "name": "ox_lib",
   "version": "0.1.0",
-  "homepage": "web/build",
+  "homepage": "http://web/build",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -54,5 +54,10 @@
     "patchedDependencies": {
       "react-hot-toast@2.4.0": "patches/react-hot-toast@2.4.0.patch"
     }
-  }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

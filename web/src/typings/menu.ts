@@ -21,6 +21,8 @@ export interface MenuItem {
 export interface MenuSettings {
   position?: MenuPosition;
   title: string;
+  banner?: string;
+  bannerIcon?: string;
   canClose?: boolean;
   items: Array<MenuItem>;
   startItemIndex?: number;
